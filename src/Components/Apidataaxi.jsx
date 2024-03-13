@@ -29,9 +29,12 @@ const Apidataaxi = () => {
      })
      
 
+<<<<<<< HEAD
 
      
 
+=======
+>>>>>>> feature
   return (
     <div>
       <h1 className='heading'>Fetching Data From Api</h1>

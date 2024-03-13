@@ -1,12 +1,15 @@
-import { useState } from 'react'
-import './App.css'
+import Apidata from "./Components/Apidata"
+import Apidataaxi from "./Components/Apidataaxi"
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
-      
+      {/* <Apidata/> */}
+      <Apidataaxi/>
     </>
   )
 }

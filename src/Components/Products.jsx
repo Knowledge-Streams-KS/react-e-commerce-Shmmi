@@ -3,7 +3,11 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import "./Api.css"
+import { useContext } from 'react';
+import { CartContext } from '../Pages/CartContext';
+
 const Products = () => {
+  const[items,setItems] = useContext(CartContext)
 
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
@@ -35,7 +39,7 @@ const detailid= useNavigate()
     
     }
     getData()
-  }, [])
+  }, [categoryName])
 
 
   const handleSearch = (event) => {
@@ -45,6 +49,11 @@ const detailid= useNavigate()
   const filterData = data.filter((element) => {
     return element.title.toLowerCase().includes(search.toLowerCase());
   })
+
+  const addCart = (product)=>{
+    setItems(prevItems => [...prevItems, product]);
+    console.log(addCart)
+  }
 
   return (
     <div>
@@ -60,6 +69,8 @@ const detailid= useNavigate()
                 {/* <h4>{element.description}</h4> */}
                 <img className="image" src={element.image} alt="" />
                 <button onClick={()=> detailid(`/productDetail/${element.id}`)}>Show detail</button>
+                {/* <button onClick={()=>{addCart}}>Add to Cart</button> */}
+                <button onClick={() => addCart(element)}>Add to Cart</button>
 
               </div>
             )
